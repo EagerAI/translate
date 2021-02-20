@@ -1,0 +1,22 @@
+name: 'Translation'
+description: 'Prediction'
+inputs:
+  issue_comment_body:
+    required: true
+    description: 'This is the Github issue comment message'
+  issue_number:
+     required: true
+     description: 'Number of the Github issue'
+  issue_user:
+      required: true
+      description: 'This user send the comment'
+outputs:
+  issue_comment_reply:
+    description: 'Reply to the request'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.issue_comment_body }}
+    - ${{ inputs.issue_number }}
+    - ${{ inputs.issue_user }}

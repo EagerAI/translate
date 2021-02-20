@@ -1,0 +1,28 @@
+name: Demo
+on: [issue_comment]
+
+jobs:
+    my_first_job:
+        runs-on: ubuntu-latest
+        name: Translation
+        steps:
+            - name: Checkout
+              uses: actions/checkout@master
+            - name: See full payload (for debugging)
+              env:
+                  PAYLOAD: ${{ toJSON(github.event) }}
+              run: echo "FULL PAYLOAD:\n${PAYLOAD}\n"
+            - name: Run the container and make a prediction
+              if: startsWith(github.event.comment.body, '/predict')
+              uses: ./
+              id: make_prediction
+              with:
+                  issue_comment_body: ${{ github.event.comment.body }}
+                  issue_number: ${{ github.event.issue.number }}
+                  issue_user: ${{ github.event.comment.user.login }}
+            - name: Print the output from the container(for debugging)
+              run: echo "The reply message is ${{steps.make_prediction.outputs.issue_comment_reply}}"
+            - name: Send reply to issue for user
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: bash issue_comment.sh "${{steps.make_prediction.outputs.issue_comment_reply}}" "${{ github.event.issue.number }}"
