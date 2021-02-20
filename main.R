@@ -14,7 +14,7 @@ args = commandArgs(trailingOnly=TRUE)
 user = grep('predict',args,value = T)
 # [1] "--issue_comment_body"   " /predict az_AZ en_XX Təşkilatçıların maddi rifahı naminə sayı 100 min izləyiciyə çatdıra bilmərik”, - deyə Fransanın mədəniyyət naziri bildirib." "--issue_number"        
 # [4] "2"                      "--issue_user"           "henry090"    
-
+print(args)
 
 args[4] -> issue_
 
