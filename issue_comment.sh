@@ -1,6 +1,6 @@
 MESSAGE=$1
 echo "Message: ${MESSAGE}"
-ISSUE_NUMBER=$5
+ISSUE_NUMBER=$2
 echo "Issue Number: ${ISSUE_NUMBER}"
 
 URI=https://api.github.com
