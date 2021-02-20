@@ -51,7 +51,7 @@ f.close()
 
 prob=paste(readLines("output.txt"), collapse=" ")
 
-reply_message = glue::glue("Hey @{user_}!<br>This was your input: {body__}.<br>The is the prediction: **{prob}**")
+reply_message = glue::glue("Hey @{user_}!<br>This was your input: **{body__}**.<br> <br> The is the prediction: **{prob}**")
 
 reply_message = glue::glue('print(f"::set-output name=issue_comment_reply::{reply_message}")')
 
