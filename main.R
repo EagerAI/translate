@@ -1,5 +1,12 @@
 
 
+install.packages(c('magrittr','glue'))
+install.packages('remotes')
+remotes::install_github('rstudio/reticulate')
+reticulate::install_miniconda()
+reticulate::py_install('git+https://github.com/huggingface/transformers.git',pip = TRUE)
+reticulate::py_install('sentencepiece',pip = TRUE)
+
 library(magrittr)
 
 # import
