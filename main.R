@@ -5,6 +5,7 @@ install.packages('remotes')
 install.packages('reticulate')
 #remotes::install_github('rstudio/reticulate')
 reticulate::install_miniconda()
+reticulate::conda_create('r-reticulate', python_version = '3.9')
 reticulate::py_install('git+https://github.com/huggingface/transformers.git protobuf',pip = TRUE)
 reticulate::py_install('sentencepiece torch==1.7.1+cpu torchvision==0.8.2+cpu torchaudio==0.7.2 -f https://download.pytorch.org/whl/torch_stable.html',pip = TRUE)
 
